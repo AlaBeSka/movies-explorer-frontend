@@ -1,0 +1,133 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card__poster {
+  width: 100%;
+  object-fit: cover;
+  height: 203px;
+}
+
+.card__container {
+  margin: 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card__name {
+  color: #fff;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.card__duration {
+  color: #8b8b8b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 17px 0 0;
+  margin: 0;
+}
+
+.card__like {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../../../images/like.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+  padding: 0;
+  margin: 0;
+}
+
+.card__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__like_active {
+  background-image: url(../../../images/red-like.svg);
+}
+
+.card__like_delete {
+  background-image: url(../../../images/delete__card.svg);
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 0s;
+  padding: 0;
+  margin: 0;
+}
+
+.card__container:hover,
+.card__container:hover > .card__like_delete {
+  cursor: pointer;
+}
+
+.card__container:hover > .card__like_delete {
+  opacity: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .card__poster {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card__poster {
+    height: 168px;
+  }
+
+  .card__name {
+    font-size: 12px;
+  }
+
+  .card__duration {
+    font-size: 10px;
+  }
+
+  .card__container {
+    margin: 14px 10px 14px 14px;
+  }
+
+  .card__like_delete {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0s;
+  }
+
+  .card__like_delete:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .card__container:hover {
+    cursor: default;
+  }
+}

@@ -1,0 +1,146 @@
+.register {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: transparent;
+  padding: 70px 0 70px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__title {
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 40px 0;
+}
+
+.register__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.register__input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.register__label {
+  color: #8b8b8b;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__name {
+  width: 400px;
+  color: #fff;
+  background-color: transparent;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  border-bottom: 1px solid #424242;
+  margin: 5px 0 0;
+  padding: 0 0 10px;
+  outline: none;
+}
+
+.register__name:focus {
+    border-bottom: 2px solid #4285F4;
+}
+
+.register__submit {
+  border: none;
+  background-color: #4285F4;
+  border-radius: 3px;
+  width: 100%;
+  margin: 134px auto 16px;
+  padding: 13px 0 15px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.profile__save:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.register__question {
+    color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.register__login {
+  text-decoration: none;
+  color: #4285F4;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 800px) {
+  .register {
+    padding: 160px 0 232px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register {
+    padding: 0 30px 20px;
+    align-items: center;
+  }
+
+  .register__title {
+    margin: 50px auto 80px;
+  }
+
+  .register__name {
+    width: 240px;
+  }
+
+  .register__submit {
+    font-size: 12px;
+    margin: 222px auto 14px;
+  }
+
+  .register__question {
+    font-size: 12px;
+  }
+
+  .register__login {
+    font-size: 12px;
+  }
+}
