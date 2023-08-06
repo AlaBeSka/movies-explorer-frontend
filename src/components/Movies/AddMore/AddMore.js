@@ -1,10 +1,10 @@
 import React from "react";
 import "./AddMore.css";
 
-function AddMore() {
+function AddMore({ handleShowMore }) {
   return (
     <div className="more">
-      <button className="more__button">Ещё</button>
+      <button className="more__button" onClick={handleShowMore}>Ещё</button>
     </div>
   );
 }

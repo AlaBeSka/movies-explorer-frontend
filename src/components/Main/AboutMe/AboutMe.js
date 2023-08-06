@@ -4,7 +4,7 @@ import avatar from "../../../images/pic__COLOR_pic.png";
 
 function AboutMe() {
   return (
-    <div className="about">
+    <div className="about" id="about-me">
       <h2 className="about__title">Студент</h2>
       <div className="about__columns">
         <div className="about__container">
@@ -19,7 +19,7 @@ function AboutMe() {
               заниматься фриланс-заказами и ушёл с постоянной работы.
             </p>
           </div>
-          <a href="https://github.com/AlaBeSka" className="about__github">
+          <a href="https://github.com/AlaBeSka" rel="noreferrer" className="about__github">
             Github
           </a>
         </div>

@@ -1,8 +1,11 @@
 import React from "react";
 import "./MovieCard.css";
 import movie from "../../../images/movie.png";
+import { useLocation } from "react-router-dom";
 
 function MovieCard() {
+  let location = useLocation();
+
   return (
     <div className="card">
       <img src={movie} alt="Постер" className="card__poster" />
@@ -11,7 +14,11 @@ function MovieCard() {
           <p className="card__name">33 слова о дизайне</p>
           <p className="card__duration">1ч42м</p>
         </div>
-        <button className="card__like"></button>
+        <button
+          className={`${
+            location.pathname === "/movies" ? "card__like" : "card__like_delete"
+          }`}
+        ></button>
       </div>
     </div>
   );

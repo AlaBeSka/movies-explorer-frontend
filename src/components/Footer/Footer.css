@@ -49,6 +49,10 @@
     font-weight: 400;
     line-height: normal;
   }
+
+  .footer__hidden {
+    display: none;
+  }
   
   @media screen and (max-width: 900px) {
     .footer {
