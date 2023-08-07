@@ -1,3 +1,3 @@
 # Дипломный проект для Яндекс.Практикум
 ### Адрес репозитория: https://github.com/AlaBeSka/movies-explorer-frontend
-### Ссылка на проект в фигме: https://docviewer.yandex.ru/view/1689406308/?*=I2u7V84zltko6kpJprC1N69jhGl7InVybCI6InlhLWRpc2s6Ly8vZGlzay9EaXBsb21ZVC9EaXBsb21ZUC5maWciLCJ0aXRsZSI6IkRpcGxvbVlQLmZpZyIsIm5vaWZyYW1lIjpmYWxzZSwidWlkIjoiMTY4OTQwNjMwOCIsInRzIjoxNjkxMzUyMzE4OTM5LCJ5dSI6IjM4Nzk4NDgwMTE2NjY1NTA0NzUifQ%3D%3D
+### Ссылка на проект в фигме: https://disk.yandex.ru/d/D2Xk3thE9HLKLg
