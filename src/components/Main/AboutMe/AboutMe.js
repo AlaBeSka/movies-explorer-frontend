@@ -4,7 +4,7 @@ import avatar from "../../../images/pic__COLOR_pic.png";
 
 function AboutMe() {
   return (
-    <div className="about" id="about-me">
+    <section className="about" id="about-me">
       <h2 className="about__title">Студент</h2>
       <div className="about__columns">
         <div className="about__container">
@@ -25,7 +25,7 @@ function AboutMe() {
         </div>
         <img src={avatar} alt="Ваш аватар" className="about__photo" />
       </div>
-    </div>
+    </section>
   );
 }
 

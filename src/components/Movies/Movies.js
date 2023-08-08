@@ -4,10 +4,10 @@ import Cardlist from "./CardList/CardList";
 
 function Movies() {
   return (
-    <div>
+    <main>
       <SearchForm />
       <Cardlist />
-    </div>
+    </main>
   );
 }
 

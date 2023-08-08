@@ -9,14 +9,14 @@ function Header({ onOpenMenu }) {
   return (
     <header
       className={`${
-        location.pathname !== "/" &&
+        (location.pathname !== "/" &&
         location.pathname !== "/movies" &&
         location.pathname !== "/saved-movies" &&
-        location.pathname !== "/profile"
+        location.pathname !== "/profile")
           ? "header__hidden"
-          : location.pathname === "/"
+          : (location.pathname === "/"
           ? "header"
-          : "header__profile" 
+          : "header__profile") 
       }`}
     >
       <Routes>
@@ -39,9 +39,9 @@ function Header({ onOpenMenu }) {
       <div className="header__nav">
         <button
           className={`${
-            location.pathname === "/movies" ||
+            (location.pathname === "/movies" ||
             location.pathname === "/saved-movies" ||
-            location.pathname === "/profile"
+            location.pathname === "/profile")
               ? "header__button_menu"
               : "header__button_hidden"
           }`}

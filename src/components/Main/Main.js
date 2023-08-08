@@ -29,13 +29,13 @@ function Main() {
   }, []);
 
   return (
-    <div className="main">
+    <main className="main">
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe id="about-me" />
       <Portfolio />
-    </div>
+    </main>
   );
 }
 

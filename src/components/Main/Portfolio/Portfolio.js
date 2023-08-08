@@ -4,7 +4,7 @@ import arrow from "../../../images/arrow.svg";
 
 function Portfolio() {
   return (
-    <div className="portfolio">
+    <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>
       <nav>
         <ul className="portfolio__list">
@@ -17,7 +17,7 @@ function Portfolio() {
             >
               Статичный сайт
             </a>
-            <img src={arrow} alt="" className="portfolio__arrow" />
+            <img src={arrow} alt="arrow" className="portfolio__arrow" />
           </li>
           <li className="portfolio__button">
             <a
@@ -28,7 +28,7 @@ function Portfolio() {
             >
               Адаптивный сайт
             </a>
-            <img src={arrow} alt="" className="portfolio__arrow" />
+            <img src={arrow} alt="arrow" className="portfolio__arrow" />
           </li>
           <li className="portfolio__button">
             <a
@@ -39,11 +39,11 @@ function Portfolio() {
             >
               Одностраничное приложение
             </a>
-            <img src={arrow} alt="" className="portfolio__arrow" />
+            <img src={arrow} alt="arrow" className="portfolio__arrow" />
           </li>
         </ul>
       </nav>
-    </div>
+    </section>
   );
 }
 

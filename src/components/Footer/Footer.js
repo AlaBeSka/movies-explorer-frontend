@@ -6,11 +6,11 @@ function Footer() {
   let location = useLocation();
 
   return (
-    <div
+    <footer
       className={`${
-        location.pathname === "/movies" ||
+        (location.pathname === "/movies" ||
         location.pathname === "/saved-movies" ||
-        location.pathname === "/"
+        location.pathname === "/")
           ? "footer"
           : "footer__hidden"
       }`}
@@ -43,7 +43,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }
 

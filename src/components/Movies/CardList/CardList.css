@@ -1,5 +1,5 @@
 .movies {
-  padding: 0 70px 60px;
+  padding: 0 70px 10px;
   background-color: transparent;
   display: grid;
   grid-template-columns: repeat(auto-fit, 364px);
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 900px) {
   .movies {
-    padding: 0 30px 80px;
+    padding: 0 30px 76px;
     grid-template-columns: repeat(auto-fit, 339px);
     grid-template-rows: repeat(auto-fit, 262px);
     gap: 30px 30px;

@@ -7,7 +7,7 @@ function MovieCard() {
   let location = useLocation();
 
   return (
-    <div className="card">
+    <article className="card">
       <img src={movie} alt="Постер" className="card__poster" />
       <div className="card__container">
         <div className="card__description">
@@ -16,11 +16,11 @@ function MovieCard() {
         </div>
         <button
           className={`${
-            location.pathname === "/movies" ? "card__like" : "card__like_delete"
+            (location.pathname === "/movies") ? "card__like" : "card__like_delete"
           }`}
         ></button>
       </div>
-    </div>
+    </article>
   );
 }
 

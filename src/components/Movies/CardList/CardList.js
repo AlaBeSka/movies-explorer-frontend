@@ -17,9 +17,9 @@ function Cardlist() {
 
   return (
     <>
-    <div className="movies">
+    <section className="movies">
       {[...Array(visibleCards)].map((_, index) => <MovieCard key={index}/>)}
-    </div>
+    </section>
     {visibleCards < 16 && <AddMore handleShowMore={handleShowMore}/>}
     </>
   );

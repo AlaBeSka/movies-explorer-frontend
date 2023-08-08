@@ -97,8 +97,8 @@
 .about__photo {
   border-radius: 10px;
   margin: 0;
-  max-width: 270px;
-  max-height: 327px;
+  width: 270px;
+  height: 327px;
   object-fit: cover;
 }
 
@@ -133,8 +133,8 @@
   }
 
   .about__photo {
-    max-width: 255px;
-    max-height: 307px;
+    width: 255px;
+    height: 307px;
   }
 }
 
@@ -143,16 +143,33 @@
     padding: 70px 14px;
   }
 
+  .about__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    padding-bottom: 28px;
+  }
+
   .about__name {
     margin-top: 40px;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 30px;
+    line-height: normal;
     letter-spacing: -1.6px;
+  }
+
+  .about__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about__age {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 20px 0;
   }
 
   .about__columns {
     flex-direction: column;
-    margin: 40px 0 0;
+    margin: 60px 0 0;
   }
 
   .about__container {
@@ -167,7 +184,8 @@
   .about__photo {
     order: 1;
     margin: 0 auto;
-    max-width: 300px;
-    max-height: 350px;
+    width: 292px;
+    height: 352px;
+    object-fit: cover;
   }
 }

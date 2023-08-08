@@ -15,7 +15,7 @@
 
 .navigation__container {
   background-color: #202020;
-  width: 60%;
+  width: 69%;
   position: fixed;
   top: 0;
   right: 0;
@@ -51,8 +51,8 @@
   padding: 0;
   background-repeat: no-repeat;
   background-image: url("../../images/header__close.svg");
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
   border: none;
   opacity: 1;
@@ -96,14 +96,18 @@
     width: 100%;
   }
 
-  .navigation__close {
-    top: 13px;
-    right: 13px;
+  .navigation__button_close {
+    top: 25px;
+    right: 10px;
     width: 30px;
     height: 30px;
   }
 
   .navigation__account {
-    margin-top: 400px;
+    margin-top: 415px;
+  }
+
+  .navigation__menu {
+    margin-top: 155px;
   }
 }

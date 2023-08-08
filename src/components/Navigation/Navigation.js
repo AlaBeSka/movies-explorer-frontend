@@ -13,13 +13,14 @@ const Navigation = ({ isOpen, onClose }) => {
           <Routes>
             {["/movies", "/saved-movies", "/profile"].map((path) => (
               <Route
+                key={path}
                 path={path}
                 element={
                   <>
                     <Link
                       to="/"
                       className={`navigation__navlink ${
-                        location.pathname === "/"
+                        (location.pathname === "/")
                           ? "navigation__navlink_active"
                           : ""
                       }`}
@@ -30,7 +31,7 @@ const Navigation = ({ isOpen, onClose }) => {
                     <Link
                       to="/movies"
                       className={`navigation__navlink ${
-                        location.pathname === "/movies"
+                        (location.pathname === "/movies")
                           ? "navigation__navlink_active"
                           : ""
                       }`}
@@ -41,7 +42,7 @@ const Navigation = ({ isOpen, onClose }) => {
                     <Link
                       to="/saved-movies"
                       className={`navigation__navlink ${
-                        location.pathname === "/saved-movies"
+                        (location.pathname === "/saved-movies")
                           ? "navigation__navlink_active"
                           : ""
                       }`}

@@ -3,7 +3,7 @@ import "./Techs.css";
 
 function Techs() {
   return (
-    <div className="techs">
+    <section className="techs">
       <div className="techs__name">Технологии</div>
       <h2 className="techs__title">7 технологий</h2>
       <h3 className="techs__description">
@@ -19,7 +19,7 @@ function Techs() {
         <li className="techs__element">Express.js</li>
         <li className="techs__element">mongoDB</li>
       </ul>
-    </div>
+    </section>
   );
 }
 

@@ -5,7 +5,7 @@ import { Link, Route, Routes } from "react-router-dom";
 
 const Login = () => {
   return (
-    <section className="login">
+    <main className="login">
       <Routes>
         <Route
           path="/"
@@ -59,10 +59,9 @@ const Login = () => {
                   Войти
                 </Link>
                 <p className="login__question">
-                  Ещё не зарегистрированы?
+                  Ещё не зарегистрированы?&nbsp;
                   <Link to="/signup" className="login__login">
-                    {" "}
-                    Регистрация
+                  &nbsp;Регистрация
                   </Link>
                 </p>
               </>
@@ -70,7 +69,7 @@ const Login = () => {
           />
         </Routes>
       </form>
-    </section>
+    </main>
   );
 };
 

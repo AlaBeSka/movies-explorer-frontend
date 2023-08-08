@@ -1,6 +1,6 @@
 .more {
   background-color: transparent;
-  padding: 50px 70px 80px;
+  padding: 50px 70px 98px;
   font-family: "Inter", Arial, sans-serif;
 }
 
@@ -27,12 +27,12 @@
 
 @media screen and (max-width: 800px) {
   .more {
-    padding: 50px 30px 80px;
+    padding: 0px 30px 100px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .more {
-    padding: 50px 10px 80px;
+    padding: 0px 10px 80px;
   }
 }
