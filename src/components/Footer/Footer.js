@@ -8,9 +8,9 @@ function Footer() {
   return (
     <footer
       className={`${
-        (location.pathname === "/movies" ||
+        location.pathname === "/movies" ||
         location.pathname === "/saved-movies" ||
-        location.pathname === "/")
+        location.pathname === "/"
           ? "footer"
           : "footer__hidden"
       }`}
