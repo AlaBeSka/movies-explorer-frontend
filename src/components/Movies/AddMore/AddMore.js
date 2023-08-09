@@ -4,7 +4,7 @@ import "./AddMore.css";
 function AddMore({ handleShowMore }) {
   return (
     <section className="more">
-      <button className="more__button" onClick={handleShowMore}>Ещё</button>
+      <button type="button" className="more__button" onClick={handleShowMore}>Ещё</button>
     </section>
   );
 }

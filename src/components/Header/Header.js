@@ -36,8 +36,8 @@ function Header({ onOpenMenu }) {
           />
         ))}
       </Routes>
-      <div className="header__nav">
-        <button
+      <nav className="header__nav">
+        <button type="button"
           className={`${
             (location.pathname === "/movies" ||
             location.pathname === "/saved-movies" ||
@@ -80,12 +80,12 @@ function Header({ onOpenMenu }) {
             />
           ))}
         </Routes>
-      </div>
+      </nav>
       <Routes>
         <Route
           path="/"
           element={
-            <div>
+            <nav>
               <Link to="/signup" id="registerLink" className={`header__link`}>
                 Регистрация
               </Link>
@@ -96,7 +96,7 @@ function Header({ onOpenMenu }) {
               >
                 Войти
               </Link>
-            </div>
+            </nav>
           }
         />
       </Routes>

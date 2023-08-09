@@ -6,7 +6,6 @@
   box-sizing: border-box;
   background-color: #073042;
   font-family: "Inter", Arial, sans-serif;
-  overflow: hidden;
 }
 
 .header__profile {
@@ -16,7 +15,6 @@
   align-items: center;
   padding: 18px 70px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .header__hidden {

@@ -15,9 +15,9 @@ function Footer() {
           : "footer__hidden"
       }`}
     >
-      <div className="footer__title">
+      <p className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
-      </div>
+      </p>
       <div className="footer__container">
         <p className="footer__year">&#169; 2023</p>
         <ul className="footer__links">

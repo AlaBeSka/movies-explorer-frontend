@@ -3,8 +3,8 @@ import "./Profile.css";
 
 const Profile = () => {
   return (
-    <section className="profile">
-      <h2 className="profile__hello">Привет, Виталий!</h2>
+    <main className="profile">
+      <h1 className="profile__hello">Привет, Виталий!</h1>
       <form className="profile__form">
         <div className="profile__input">
           <label htmlFor="name-field" className="profile__lable">
@@ -42,7 +42,7 @@ const Profile = () => {
         <button className="profile__edit">Редактировать</button>
         <button className="profile__quit">Выйти из аккаунта</button>
       </form>
-    </section>
+    </main>
   );
 };
 

@@ -19,7 +19,7 @@ function AboutMe() {
               заниматься фриланс-заказами и ушёл с постоянной работы.
             </p>
           </div>
-          <a href="https://github.com/AlaBeSka" rel="noreferrer" className="about__github">
+          <a href="https://github.com/AlaBeSka" target="_blank" rel="noreferrer" className="about__github">
             Github
           </a>
         </div>

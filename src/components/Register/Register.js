@@ -5,11 +5,11 @@ import {Link, Route, Routes} from "react-router-dom";
 
 const Register = () => {
   return (
-    <div className="register">
+    <main className="register">
       <Routes>
         <Route path="/" element={<Link id='signInImg' to="/"><img src={logo} alt="Логотип" className="register__logo"/></Link>} />
       </Routes>
-      <h2 className="register__title">Добро пожаловать!</h2>
+      <h1 className="register__title">Добро пожаловать!</h1>
       <form className="register__form">
         <div className="register__inputs">
           <div className="register__input">
@@ -68,7 +68,7 @@ const Register = () => {
           }/>
         </Routes>
       </form>
-    </div>
+    </main>
   );
 };
 

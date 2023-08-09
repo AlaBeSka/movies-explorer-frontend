@@ -8,7 +8,7 @@ const Navigation = ({ isOpen, onClose }) => {
   return (
     <section className={`navigation ${isOpen && "navigation__open"}`}>
       <div className="navigation__container">
-        <button className="navigation__button_close" onClick={onClose} />
+        <button type="button" className="navigation__button_close" onClick={onClose} />
         <nav className="navigation__menu">
           <Routes>
             {["/movies", "/saved-movies", "/profile"].map((path) => (

@@ -53,12 +53,15 @@
   margin: 0;
   padding-bottom: 19px;
   text-align: left;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .portfolio__arrow {
   width: 25px;
   height: 25px;
-  padding-bottom: 19px;
+  align-self: center;
 }
 
 @media screen and (max-width: 1000px) {
