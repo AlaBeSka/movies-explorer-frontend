@@ -29,7 +29,7 @@ function Header({ onOpenMenu }) {
                 <img
                   className="header__logo"
                   src={logo}
-                  alt="Movies Explorer"
+                  alt="логотип"
                 />
               </Link>
             }

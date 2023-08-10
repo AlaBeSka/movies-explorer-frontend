@@ -6,6 +6,7 @@ import { Link, Route, Routes } from "react-router-dom";
 const Login = () => {
   return (
     <main className="login">
+      <section className="login__section">
       <Routes>
         <Route
           path="/"
@@ -31,7 +32,8 @@ const Login = () => {
               maxLength="40"
               required
               name="emaillogin"
-              value={"pochta@yandex.ru"}
+              defaultValue={"pochta@yandex.ru"}
+              placeholder="Введите ваш e-mail"
             ></input>
           </div>
           <div className="login__input">
@@ -46,7 +48,8 @@ const Login = () => {
               maxLength="40"
               required
               name="passlogin"
-              value={"12345"}
+              defaultValue={"12345"}
+              placeholder="Введите ваш пароль"
             ></input>
           </div>
         </div>
@@ -69,6 +72,7 @@ const Login = () => {
           />
         </Routes>
       </form>
+      </section>
     </main>
   );
 };

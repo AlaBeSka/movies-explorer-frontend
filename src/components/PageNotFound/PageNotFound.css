@@ -7,6 +7,11 @@
   font-family: "Inter", Arial, sans-serif;
 }
 
+.error__section {
+  display: flex;
+  flex-direction: column;
+}
+
 .error__number {
   color: #fff;
   text-align: center;
@@ -39,6 +44,13 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.error__back:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {

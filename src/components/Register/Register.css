@@ -12,6 +12,13 @@
 .register__logo {
   width: 38px;
   height: 38px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.register__logo:hover{
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .register__form {

@@ -8,7 +8,7 @@ function MovieCard() {
 
   return (
     <article className="card">
-      <img src={movie} alt="Постер" className="card__poster" />
+      <img src={movie} alt="Постер фильма '33 слова о дизайне'" className="card__poster" />
       <div className="card__container">
         <div className="card__description">
           <h2 className="card__name">33 слова о дизайне</h2>

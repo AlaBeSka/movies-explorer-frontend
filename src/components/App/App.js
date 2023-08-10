@@ -19,16 +19,17 @@ function App() {
     setIsMenuOpen(false);
   }
 
+
   return (
     <div className="app">
       <Header onOpenMenu={() => setIsMenuOpen(true)} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/signup/*" element={<Register />} />
+        <Route path="/signin/*" element={<Login />} />
+        <Route path="/movies/*" element={<Movies />} />
+        <Route path="/profile/*" element={<Profile />} />
+        <Route path="/saved-movies/*" element={<SavedMovies />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

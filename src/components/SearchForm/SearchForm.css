@@ -13,6 +13,7 @@
   width: 100%;
   height: 46px;
   flex-direction: column;
+  position: relative;
 }
 
 .search__container {
@@ -30,8 +31,8 @@
   background-color: transparent;
   width: 100%;
   padding: 14px 0 14px 22px;
-  outline: none;
   overflow: hidden;
+  border-radius: 40px;
 }
 
 .search__submit {
@@ -42,10 +43,13 @@
   background-color: transparent;
   width: 80px;
   height: 34px;
-  margin: 6px 6px 6px 0;
   padding: 0;
   opacity: 1;
   transition: opacity 0.5s ease-in-out 0s;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
 }
 
 .search__submit:hover {

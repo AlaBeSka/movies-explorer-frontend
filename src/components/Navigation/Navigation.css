@@ -74,6 +74,13 @@
   background-color: #313131;
   border-radius: 20px;
   margin-top: 600px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.navigation__account:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .navigation__button_close:hover {

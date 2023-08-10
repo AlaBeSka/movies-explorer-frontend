@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.css";
 import { useLocation } from "react-router-dom";
 
-function Footer() {
+function Footer({ visibleCards }) {
   let location = useLocation();
 
   return (
@@ -11,7 +11,9 @@ function Footer() {
         location.pathname === "/movies" ||
         location.pathname === "/saved-movies" ||
         location.pathname === "/"
-          ? "footer"
+          ? visibleCards > 12
+            ? "footer__more"
+            : "footer"
           : "footer__hidden"
       }`}
     >
