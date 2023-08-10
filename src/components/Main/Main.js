@@ -5,6 +5,7 @@ import Techs from "./Techs/Techs";
 import Portfolio from "./Portfolio/Portfolio";
 import AboutMe from "./AboutMe/AboutMe";
 import { scroller } from "react-scroll";
+import Footer from "../Footer/Footer";
 
 function Main() {
   useEffect(() => {
@@ -35,6 +36,7 @@ function Main() {
       <Techs />
       <AboutMe id="about-me" />
       <Portfolio />
+      <Footer />
     </main>
   );
 }

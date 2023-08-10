@@ -4,7 +4,6 @@ import Profile from "../Profile/Profile";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -32,7 +31,6 @@ function App() {
         <Route path="/saved-movies/*" element={<SavedMovies />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
       <Navigation isOpen={isMenuOpen} onClose={closeMenu} />
     </div>
   );

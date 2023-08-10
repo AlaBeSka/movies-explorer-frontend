@@ -2,6 +2,7 @@ import React from "react";
 import "./CardList.css";
 import MovieCard from "../MovieCard/MovieCard";
 import AddMore from "../AddMore/AddMore";
+import Footer from "../../Footer/Footer";
 
 function Cardlist() {
   const [visibleCards, setVisibleCards] = React.useState(12);
@@ -21,6 +22,7 @@ function Cardlist() {
       {[...Array(visibleCards)].map((_, index) => <MovieCard key={index}/>)}
     </section>
     {visibleCards < 16 && <AddMore handleShowMore={handleShowMore}/>}
+    <Footer visibleCards={visibleCards} />
     </>
   );
 }

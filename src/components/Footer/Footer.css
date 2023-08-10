@@ -1,11 +1,11 @@
 .footer {
   font-family: "Inter", Arial, sans-serif;
-  padding: 159px 70px 20px;
+  padding: 79px 70px 20px;
 }
 
 .footer__more {
   font-family: "Inter", Arial, sans-serif;
-  padding: 264px 70px 20px;
+  padding: 266px 70px 20px;
 }
 
 .footer__title {
@@ -62,19 +62,23 @@
   cursor: pointer;
 }
 
-.footer__hidden {
-  display: none;
-}
-
 @media screen and (max-width: 900px) {
   .footer {
-    padding: 159px 25px 20px;
+    padding: 79px 25px 20px;
+  }
+
+  .footer__more {
+    padding: 169px 25px 20px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .footer {
-    padding: 159px 10px 20px;
+    padding: 79px 10px 20px;
+  }
+
+  .footer__more {
+    padding: 169px 10px 20px;
   }
 
   .footer__title {
