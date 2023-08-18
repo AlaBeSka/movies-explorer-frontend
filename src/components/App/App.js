@@ -24,7 +24,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [filterMovies, setFilterMovies] = useState([]);
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [firstMoviesAmount, setFirstMoviesAmount] = useState(0);
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [addMoviesAmount, setAddMoviesAmount] = useState(0);
@@ -53,15 +53,32 @@ function App() {
           console.log(res);
           if (res) {
             setLoggedIn(true);
-            navigate("/", { replace: true });
+            if (location.pathname !== "/") {
+              const lastPath = location.pathname;
+              navigate(lastPath, { replace: true });
+            } else {
+              navigate("/", { replace: true });
+            }
           }
         })
         .catch((err) => console.log(err));
     }
   };
+
   useEffect(() => {
     cbCheckToken();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("lastPath", location.pathname);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const lastPath = localStorage.getItem("lastPath");
+    if (lastPath) {
+      navigate(lastPath, { replace: true });
+    }
+  }, [navigate]);
 
   useEffect(() => {
     setIsPreloaderLoading(true);
@@ -97,6 +114,51 @@ function App() {
     }
     setIsPreloaderLoading(false);
   }, [location]);
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
+  function setMoviesAmounts() {
+    if (windowSize.innerWidth > 1007) {
+      setFirstMoviesAmount(12);
+      setAddMoviesAmount(3);
+    } else if (windowSize.innerWidth > 760) {
+      setFirstMoviesAmount(8);
+      setAddMoviesAmount(2);
+    } else {
+      setFirstMoviesAmount(5);
+      setAddMoviesAmount(2);
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.renderedMovies) {
+      const parsedMovies = JSON.parse(localStorage.renderedMovies);
+      setMovies(parsedMovies);
+      setMovies(parsedMovies.slice(0, firstMoviesAmount));
+      setFilterMovies(JSON.parse(localStorage.renderedMovies));
+      setMoviesAmounts();
+      if (parsedMovies.length <= firstMoviesAmount) {
+        setIsMore(false);
+      } else setIsMore(true);
+    } else {
+      setMoviesAmounts();
+    }
+  }, [windowSize, loggedIn]);
 
   function handleSaveMovie(movie) {
     if (movie.isSaved) {
@@ -138,6 +200,7 @@ function App() {
         .catch((err) => console.log(err));
     }
   }
+
   function handleDeleteMovie(movie) {
     mainApi
       .deleteMovie(movie._id)
@@ -152,6 +215,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }
+
   function handleSavedFilterCheck(checked) {
     setIsLoading(true);
     mainApi
@@ -168,28 +232,7 @@ function App() {
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
   }
-  function handleSavedMovieSearch(input) {
-    setIsLoading(true);
-    setIsInputMoviesSaved(input.input);
-    mainApi
-      .getSavedMovies()
-      .then((data) => {
-        let filtered = handleFilterMovies(
-          isFilterCheckedMoviesSaved,
-          data,
-          input.input
-        );
-        console.log(filtered);
-        if (filtered.length !== 0) {
-          setNothingFoundInSaved("");
-          setSavedMovies(filtered);
-        } else {
-          setNothingFoundInSaved("Ничего не найдено");
-        }
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
-  }
+
   function handleRegister(formValue) {
     setIsAuthLoading(true);
     auth
@@ -204,6 +247,7 @@ function App() {
       })
       .finally(() => setIsAuthLoading(false));
   }
+
   function handleLogin(formValue) {
     setIsAuthLoading(true);
     auth
@@ -224,45 +268,7 @@ function App() {
       })
       .finally(() => setIsAuthLoading(false));
   }
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-  function getWindowSize() {
-    const { innerWidth, innerHeight } = window;
-    return { innerWidth, innerHeight };
-  }
-  function setMoviesAmounts() {
-    if (windowSize.innerWidth > 1007) {
-      setFirstMoviesAmount(12);
-      setAddMoviesAmount(3);
-    } else if (windowSize.innerWidth > 760) {
-      setFirstMoviesAmount(8);
-      setAddMoviesAmount(2);
-    } else {
-      setFirstMoviesAmount(5);
-      setAddMoviesAmount(2);
-    }
-  }
-  useEffect(() => {
-    setMoviesAmounts();
-    if (localStorage.renderedMovies) {
-      setMovies(JSON.parse(localStorage.renderedMovies));
-    }
-  }, [windowSize]);
-  function handleAddMoreMovie() {
-    setMovies(
-      filterMovies.slice(0, movies.length + addMoviesAmount) || filterMovies
-    );
-    if (filterMovies.length <= movies.length + addMoviesAmount) {
-      setIsMore(false);
-    } else setIsMore(true);
-  }
+
   function handleFilterMovies(checkbox, data, inputData) {
     if (checkbox) {
       return data.filter(
@@ -296,13 +302,14 @@ function App() {
       const renderedMovies =
         filteredArr.slice(0, firstMoviesAmount) || filteredArr;
       setMovies(renderedMovies);
-      localStorage.setItem("renderedMovies", JSON.stringify(renderedMovies));
+      localStorage.setItem("renderedMovies", JSON.stringify(filteredArr));
       localStorage.setItem("nothingFound", "");
     }
     if (filteredArr.length <= firstMoviesAmount) {
       setIsMore(false);
     } else setIsMore(true);
   }
+
   function handleMovieSearch(input) {
     setIsLoading(true);
     localStorage.setItem("input", input.input);
@@ -314,12 +321,44 @@ function App() {
           data,
           input.input
         );
-        handleRenderMovies(filtered);
         handleCompareMovies(filtered);
+        handleRenderMovies(filtered);
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
   }
+
+  function handleAddMoreMovie() {
+    setMovies(
+      filterMovies.slice(0, movies.length + addMoviesAmount) || filterMovies
+    );
+    if (filterMovies.length <= movies.length + addMoviesAmount) {
+      setIsMore(false);
+    } else setIsMore(true);
+  }
+
+  function handleSavedMovieSearch(input) {
+    setIsLoading(true);
+    setIsInputMoviesSaved(input.input);
+    mainApi
+      .getSavedMovies()
+      .then((data) => {
+        let filtered = handleFilterMovies(
+          localStorage.isFilterCheckedMoviesSaved === "true",
+          data,
+          input.input
+        );
+        if (filtered.length !== 0) {
+          setNothingFoundInSaved("");
+          setSavedMovies(filtered);
+        } else {
+          setNothingFoundInSaved("Ничего не найдено");
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
+  }
+
   function handleFilterCheck(checked) {
     if (checked) {
       localStorage.setItem("isFilterChecked", true);
@@ -337,9 +376,11 @@ function App() {
         .finally(() => setIsLoading(false));
     }
   }
+
   function closeMenu() {
     setIsMenuOpen(false);
   }
+
   function onEditProfileSubmit(formValue) {
     setIsLoading(true);
     mainApi
@@ -348,7 +389,7 @@ function App() {
         setCurrentUser(data.user);
         setErrorMessageProfile("");
         setIsEditing(false);
-        alert('Изменения сохранены');
+        alert("Изменения сохранены");
       })
       .catch((err) => {
         setErrorMessageProfile(err.message);
@@ -371,8 +412,10 @@ function App() {
     setErrorMessageProfile("");
   }
 
-  return (
-    isPreloaderLoading ? <Preloader/> : <UserContext.Provider value={currentUser}>
+  return isPreloaderLoading ? (
+    <Preloader />
+  ) : (
+    <UserContext.Provider value={currentUser}>
       <div className="app">
         <Header onOpenMenu={() => setIsMenuOpen(true)} loggedIn={loggedIn} />
         <Routes>
@@ -403,19 +446,22 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute
-                element={Movies}
-                handleSearch={handleMovieSearch}
-                movies={movies}
-                onAddMore={handleAddMoreMovie}
-                isMore={isMore}
-                isLoading={isLoading}
-                isChecked={isFilterChecked}
-                setIsChecked={setIsFilterChecked}
-                onFilterCheckbox={handleFilterCheck}
-                onSaveMovie={handleSaveMovie}
-                loggedIn={loggedIn}
-              />
+              <>
+                {console.log("Value of movies:", movies)}
+                <ProtectedRoute
+                  element={Movies}
+                  handleSearch={handleMovieSearch}
+                  movies={movies}
+                  onAddMore={handleAddMoreMovie}
+                  isMore={isMore}
+                  isLoading={isLoading}
+                  isChecked={isFilterChecked}
+                  setIsChecked={setIsFilterChecked}
+                  onFilterCheckbox={handleFilterCheck}
+                  onSaveMovie={handleSaveMovie}
+                  loggedIn={loggedIn}
+                />
+              </>
             }
           />
           <Route
