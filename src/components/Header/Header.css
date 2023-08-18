@@ -43,6 +43,10 @@
   transition: opacity 0.5s ease-in-out 0s;
 }
 
+.header__navlink_default {
+  color: #fff;
+}
+
 .header__navlink-account {
   background-color: #313131;
   border-radius: 20px;

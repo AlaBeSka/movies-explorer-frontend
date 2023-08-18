@@ -1,10 +1,16 @@
 import React from "react";
 import "./Footer.css";
+import { useLocation } from "react-router-dom";
 
-function Footer({ visibleCards }) {
+function Footer() {
+  const location = useLocation();
 
   return (
-    <footer className={`${visibleCards > 12 ? "footer__more" : "footer"}`}>
+    <footer
+      className={`${
+        location.pathname === "/saved-movies" ? "footer__more" : "footer"
+      }`}
+    >
       <p className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
