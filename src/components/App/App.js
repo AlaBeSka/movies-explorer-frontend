@@ -490,7 +490,6 @@ function App() {
             path="/movies"
             element={
               <>
-                {console.log("Value of movies:", movies)}
                 <ProtectedRoute
                   element={Movies}
                   handleSearch={handleMovieSearch}
