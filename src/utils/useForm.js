@@ -47,7 +47,7 @@ export default function useForm() {
   }
 
   function setData(nameValue, emailValue) {
-    setFormValue({ name: nameValue, email: emailValue });
+    setFormValue({ ...formValue, name: nameValue, email: emailValue });
     setError({});
     setIsValid(false);
   }

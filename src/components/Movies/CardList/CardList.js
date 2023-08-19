@@ -1,7 +1,6 @@
 import React from "react";
 import "./CardList.css";
 import MovieCard from "../MovieCard/MovieCard";
-import Footer from "../../Footer/Footer";
 
 function Cardlist({ movies, onSave, onDeleteMovie }) {
   return (
@@ -18,7 +17,6 @@ function Cardlist({ movies, onSave, onDeleteMovie }) {
           );
         })}
     </section>
-    <Footer />
     </>
   );
 }

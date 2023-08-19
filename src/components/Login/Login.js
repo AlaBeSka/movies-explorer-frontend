@@ -83,7 +83,6 @@ const Login = ({
         <p className="login__question">
           Ещё не зарегистрированы?
           <Link to="/signup" className="login__login">
-            {" "}
             Регистрация
           </Link>
         </p>

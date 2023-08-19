@@ -5,6 +5,7 @@ import Cardlist from "./CardList/CardList";
 import { useLocation } from "react-router-dom";
 import AddMore from "./AddMore/AddMore";
 import Preloader from "../Preloader/Preloader";
+import Footer from "../Footer/Footer";
 
 function Movies({
   handleSearch,
@@ -36,6 +37,7 @@ function Movies({
           <h2 className="movies__notfound">Ничего не найдено</h2>
         )) || <Cardlist movies={movies} onSave={onSaveMovie} />}
       {isMore && <AddMore onAddMore={onAddMore} />}
+      <Footer />
     </main>
   );
 }
