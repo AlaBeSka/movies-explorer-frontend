@@ -35,11 +35,18 @@ function Movies({
           )
         ) : (
           <h2 className="movies__notfound">Ничего не найдено</h2>
-        )) || <Cardlist movies={movies} onSave={onSaveMovie} />}
-      {isMore && <AddMore onAddMore={onAddMore} />}
+        )) ||
+        (!isLoading && <Cardlist movies={movies} onSave={onSaveMovie} />)}
+      {isMore && !isLoading && <AddMore onAddMore={onAddMore} />}
       <Footer />
     </main>
   );
 }
 
 export default Movies;
+
+
+
+
+
+

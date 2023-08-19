@@ -166,17 +166,23 @@ function App() {
       mainApi
         .deleteMovie(movieForDelete?._id)
         .then((newMovie) => {
-          movie.isSaved = false;
-          const renderedMovies = movies.map((mov) =>
-            mov.id === movie.id ? movie : mov
-          );
-          localStorage.setItem(
-            "renderedMovies",
-            JSON.stringify(renderedMovies)
-          );
-          setMovies(renderedMovies);
-          setSavedMovies(
-            savedMovies.filter(
+          // Обновление состояния movies после удаления фильма
+          setMovies((prevMovies) => {
+            return prevMovies.map((mov) =>
+              mov.id === movie.id ? { ...mov, isSaved: false } : mov
+            );
+          });
+
+          // Обновление состояния filterMovies после удаления фильма
+          setFilterMovies((prevFilterMovies) => {
+            return prevFilterMovies.map((mov) =>
+              mov.id === movie.id ? { ...mov, isSaved: false } : mov
+            );
+          });
+
+          // Обновление состояния savedMovies после удаления фильма
+          setSavedMovies((prevSavedMovies) =>
+            prevSavedMovies.filter(
               (mov) => mov.movieId !== newMovie.myMovie.movieId
             )
           );
@@ -187,15 +193,23 @@ function App() {
         .saveMovie(movie)
         .then((newMovie) => {
           movie.isSaved = true;
+
+          // Обновление состояния movies после сохранения фильма
+          setMovies((prevMovies) => {
+            return prevMovies.map((mov) =>
+              mov.id === newMovie.movieId ? { ...mov, isSaved: true } : mov
+            );
+          });
+
+          // Обновление состояния filterMovies после сохранения фильма
+          setFilterMovies((prevFilterMovies) => {
+            return prevFilterMovies.map((mov) =>
+              mov.id === newMovie.movieId ? { ...mov, isSaved: true } : mov
+            );
+          });
+
+          // Обновление состояния savedMovies после сохранения фильма
           setSavedMovies([...savedMovies, newMovie]);
-          const renderedMovies = movies.map((mov) =>
-            mov.id === newMovie.movieId ? movie : mov
-          );
-          localStorage.setItem(
-            "renderedMovies",
-            JSON.stringify(renderedMovies)
-          );
-          setMovies(renderedMovies);
         })
         .catch((err) => console.log(err));
     }
@@ -207,11 +221,22 @@ function App() {
       .then(() => {
         setSavedMovies((state) => state.filter((mov) => mov._id !== movie._id));
         movie.isSaved = false;
-        let renderedMovies = movies.map((mov) =>
-          mov.id === movie.movieId ? movie : mov
-        );
-        localStorage.setItem("renderedMovies", JSON.stringify(renderedMovies));
-        setMovies(renderedMovies);
+
+        // Обновление состояния movies после удаления фильма
+        setMovies((prevMovies) => {
+          return prevMovies.map((mov) =>
+            mov.id === movie.movieId ? { ...mov, isSaved: false } : mov
+          );
+        });
+
+        // Обновление состояния filterMovies после удаления фильма
+        setFilterMovies((prevFilterMovies) => {
+          return prevFilterMovies.map((mov) =>
+            mov.id === movie.movieId ? { ...mov, isSaved: false } : mov
+          );
+        });
+
+        localStorage.setItem("renderedMovies", JSON.stringify(filterMovies));
       })
       .catch((err) => console.log(err));
   }
@@ -329,13 +354,28 @@ function App() {
   }
 
   function handleAddMoreMovie() {
-    setMovies(
-      filterMovies.slice(0, movies.length + addMoviesAmount) || filterMovies
-    );
-    if (filterMovies.length <= movies.length + addMoviesAmount) {
+    if (isLoading) {
+      return;
+    }
+
+    const startIndex = movies.length;
+    const endIndex = startIndex + addMoviesAmount;
+    if (endIndex >= filterMovies.length) {
+      setMovies(filterMovies);
       setIsMore(false);
-    } else setIsMore(true);
+    } else {
+      setMovies(filterMovies.slice(0, endIndex));
+    }
   }
+
+  useEffect(() => {
+    if (filterMovies.length <= firstMoviesAmount) {
+      setIsMore(false);
+    } else {
+      setIsMore(true);
+      setMovies(filterMovies.slice(0, firstMoviesAmount));
+    }
+  }, [windowSize, loggedIn, filterMovies]);
 
   function handleSavedMovieSearch(input) {
     setIsLoading(true);
@@ -419,9 +459,10 @@ function App() {
       <div className="app">
         <Header onOpenMenu={() => setIsMenuOpen(true)} loggedIn={loggedIn} />
         <Routes>
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/" element={<Main />} />
+          <Route key="*" path="*" element={<PageNotFound />} />
+          <Route key="main" path="/" element={<Main />} />
           <Route
+          key="signup"
             path="/signup/*"
             element={
               <Register
@@ -433,6 +474,7 @@ function App() {
             }
           />
           <Route
+          key="signin"
             path="/signin"
             element={
               <Login
@@ -444,6 +486,7 @@ function App() {
             }
           />
           <Route
+          key="movies"
             path="/movies"
             element={
               <>
@@ -465,6 +508,7 @@ function App() {
             }
           />
           <Route
+          key="profile"
             path="/profile"
             element={
               <ProtectedRoute
@@ -482,6 +526,7 @@ function App() {
             }
           />
           <Route
+          key="saved-movies"
             path="/saved-movies"
             element={
               <ProtectedRoute
