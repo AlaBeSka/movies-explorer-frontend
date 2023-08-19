@@ -459,7 +459,7 @@ function App() {
       <div className="app">
         <Header onOpenMenu={() => setIsMenuOpen(true)} loggedIn={loggedIn} />
         <Routes>
-          <Route key="*" path="*" element={<PageNotFound />} />
+          <Route key="*" path="*" element={<PageNotFound loggedIn={loggedIn} />} />
           <Route key="main" path="/" element={<Main />} />
           <Route
           key="signup"
