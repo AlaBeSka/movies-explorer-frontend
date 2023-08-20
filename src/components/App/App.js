@@ -417,10 +417,6 @@ function App() {
     }
   }
 
-  function closeMenu() {
-    setIsMenuOpen(false);
-  }
-
   function onEditProfileSubmit(formValue) {
     setIsLoading(true);
     mainApi
@@ -437,6 +433,10 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  function closeMenu() {
+    setIsMenuOpen(false);
   }
 
   function handleLogout() {
@@ -467,7 +467,6 @@ function App() {
           key="signup"
             path="/signup/*"
             element={
-              loggedIn ? navigate('/')  :
               <Register
                 handleRegister={handleRegister}
                 errorMessage={errorMessage}
@@ -480,7 +479,6 @@ function App() {
           key="signin"
             path="/signin"
             element={
-              loggedIn ? navigate('/')  :
               <Login
                 handleLogin={handleLogin}
                 errorMessage={errorMessage}
