@@ -4,7 +4,7 @@ import logo from "../../images/header__logo.svg";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 function Header({ onOpenMenu, loggedIn }) {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <header
@@ -33,17 +33,20 @@ function Header({ onOpenMenu, loggedIn }) {
         ))}
       </Routes>
       <nav className="header__nav">
-        <button
-          type="button"
-          className={`${
-            location.pathname === "/movies" ||
-            location.pathname === "/saved-movies" ||
-            location.pathname === "/profile"
-              ? "header__button_menu"
-              : "header__button_hidden"
-          }`}
-          onClick={onOpenMenu}
-        />
+        {loggedIn && (
+          <button
+            type="button"
+            className={`${
+              location.pathname === "/movies" ||
+              location.pathname === "/saved-movies" ||
+              location.pathname === "/" ||
+              location.pathname === "/profile"
+                ? "header__button_menu"
+                : "header__button_hidden"
+            }`}
+            onClick={onOpenMenu}
+          />
+        )}
         <Routes>
           {["/movies", "/saved-movies", "/profile"].map((path) => (
             <Route

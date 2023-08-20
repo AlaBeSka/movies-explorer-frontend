@@ -109,6 +109,10 @@
   cursor: pointer;
 }
 
+.profile__save_disabled   {
+  color: gray;
+}
+
 .profile__edit {
   margin: 220px auto 16px;
   padding: 0;

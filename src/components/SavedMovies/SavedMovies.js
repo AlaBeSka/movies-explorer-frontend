@@ -2,6 +2,7 @@ import React from "react";
 import Cardlist from "../Movies/CardList/CardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
+import Footer from "../Footer/Footer";
 
 function SavedMovies({
   isLoading,
@@ -30,6 +31,7 @@ function SavedMovies({
           onDeleteMovie={onDeleteMovie}
         />
       }
+      <Footer  />
     </main>
   );
 };

@@ -465,6 +465,7 @@ function App() {
           key="signup"
             path="/signup/*"
             element={
+              loggedIn ? <navigate to="/" /> :
               <Register
                 handleRegister={handleRegister}
                 errorMessage={errorMessage}
@@ -477,6 +478,7 @@ function App() {
           key="signin"
             path="/signin"
             element={
+              loggedIn ? <navigate to="/" /> :
               <Login
                 handleLogin={handleLogin}
                 errorMessage={errorMessage}

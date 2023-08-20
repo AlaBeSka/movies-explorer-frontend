@@ -101,7 +101,6 @@ const Register = ({
             </div>
           </div>
           <p className="register__error">{errorMessage}</p>
-          <p className="register__error">{errorMessage}</p>
           <button
             type="submit"
             className={`register__submit ${

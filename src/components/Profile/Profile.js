@@ -100,7 +100,7 @@ const Profile = ({
             type="submit"
             className={`profile__save ${
               isEditing ? "profile__save_active" : "profile__save"
-            } ${buttonDisabled ? "profile__save" : ""}`}
+            } ${buttonDisabled ? "profile__save_disabled" : ""}`}
             disabled={isEditing && buttonDisabled ? true : false}
           >
             {isLoading ? "Сохранение..." : "Сохранить"}
