@@ -9,7 +9,7 @@ import Login from "../Login/Login";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { React, useState, useEffect } from "react";
-import { Route, Routes, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import { UserContext } from "../../context/UserContext";
 import mainApi from "../../utils/MainApi";
@@ -451,7 +451,7 @@ function App() {
     setCurrentUser("");
     setErrorMessageProfile("");
 
-    return <Navigate to="/" />;
+    navigate('/');
   }
 
   return isPreloaderLoading ? (
@@ -467,7 +467,7 @@ function App() {
           key="signup"
             path="/signup/*"
             element={
-              loggedIn ? <Navigate to="/" /> :
+              loggedIn ? navigate('/')  :
               <Register
                 handleRegister={handleRegister}
                 errorMessage={errorMessage}
@@ -480,7 +480,7 @@ function App() {
           key="signin"
             path="/signin"
             element={
-              loggedIn ? <Navigate to="/" /> :
+              loggedIn ? navigate('/')  :
               <Login
                 handleLogin={handleLogin}
                 errorMessage={errorMessage}
