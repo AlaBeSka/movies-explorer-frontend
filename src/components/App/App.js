@@ -451,7 +451,7 @@ function App() {
     setCurrentUser("");
     setErrorMessageProfile("");
 
-    navigate('/');
+    navigate("/");
   }
 
   return isPreloaderLoading ? (
@@ -461,55 +461,68 @@ function App() {
       <div className="app">
         <Header onOpenMenu={() => setIsMenuOpen(true)} loggedIn={loggedIn} />
         <Routes>
-          <Route key="*" path="*" element={<PageNotFound loggedIn={loggedIn} />} />
+          <Route
+            key="*"
+            path="*"
+            element={<PageNotFound loggedIn={loggedIn} />}
+          />
           <Route key="main" path="/" element={<Main />} />
-          <Route
-          key="signup"
-            path="/signup/*"
-            element={
-              <Register
-                handleRegister={handleRegister}
-                errorMessage={errorMessage}
-                setErrorMessage={setErrorMessage}
-                isAuthLoading={isAuthLoading}
-              />
-            }
-          />
-          <Route
-          key="signin"
-            path="/signin"
-            element={
-              <Login
-                handleLogin={handleLogin}
-                errorMessage={errorMessage}
-                setErrorMessage={setErrorMessage}
-                isAuthLoading={isAuthLoading}
-              />
-            }
-          />
-          <Route
-          key="movies"
-            path="/movies"
-            element={
-              <>
-                <ProtectedRoute
-                  element={Movies}
-                  handleSearch={handleMovieSearch}
-                  movies={movies}
-                  onAddMore={handleAddMoreMovie}
-                  isMore={isMore}
-                  isLoading={isLoading}
-                  isChecked={isFilterChecked}
-                  setIsChecked={setIsFilterChecked}
-                  onFilterCheckbox={handleFilterCheck}
-                  onSaveMovie={handleSaveMovie}
-                  loggedIn={loggedIn}
+          {/* Проверка, авторизован ли пользователь, прежде чем отрисовывать компонент */}
+          {!loggedIn && (
+            <Route
+              key="signup"
+              path="/signup/*"
+              element={
+                <Register
+                  handleRegister={handleRegister}
+                  errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
+                  isAuthLoading={isAuthLoading}
                 />
-              </>
-            }
-          />
+              }
+            />
+          )}
+          {!loggedIn && (
+            <Route
+              key="signin"
+              path="/signin"
+              element={
+                <Login
+                  handleLogin={handleLogin}
+                  errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
+                  isAuthLoading={isAuthLoading}
+                />
+              }
+            />
+          )}
+
+          {/* Проверка, авторизован ли пользователь, перед отрисовкой компонента */}
+          {loggedIn && (
+            <Route
+              key="movies"
+              path="/movies"
+              element={
+                <>
+                  <ProtectedRoute
+                    element={Movies}
+                    handleSearch={handleMovieSearch}
+                    movies={movies}
+                    onAddMore={handleAddMoreMovie}
+                    isMore={isMore}
+                    isLoading={isLoading}
+                    isChecked={isFilterChecked}
+                    setIsChecked={setIsFilterChecked}
+                    onFilterCheckbox={handleFilterCheck}
+                    onSaveMovie={handleSaveMovie}
+                    loggedIn={loggedIn}
+                  />
+                </>
+              }
+            />
+          )}
           <Route
-          key="profile"
+            key="profile"
             path="/profile"
             element={
               <ProtectedRoute
@@ -527,7 +540,7 @@ function App() {
             }
           />
           <Route
-          key="saved-movies"
+            key="saved-movies"
             path="/saved-movies"
             element={
               <ProtectedRoute

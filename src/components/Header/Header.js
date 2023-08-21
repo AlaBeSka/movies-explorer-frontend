@@ -6,6 +6,10 @@ import { Link, Routes, Route, useLocation } from "react-router-dom";
 function Header({ onOpenMenu, loggedIn }) {
   const location = useLocation();
 
+  if (!loggedIn && location.pathname === "/movies") {
+    return null;
+  }
+
   return (
     <header
       className={`${
