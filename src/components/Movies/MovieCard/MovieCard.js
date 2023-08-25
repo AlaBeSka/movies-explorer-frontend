@@ -7,7 +7,7 @@ function MovieCard({ movie, onSave, onDeleteMovie }) {
   const hours = Math.floor(movie.duration / 60);
   const min = movie.duration - hours * 60;
   const ButtonSaveClass = `${(movie.isSaved) ? "card__like card__like_active" : "card__like"}`;
-
+console.log(movie)
   function handleSaveMovie(e) {
     e.preventDefault();
     onSave(movie);

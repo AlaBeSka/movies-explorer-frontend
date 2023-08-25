@@ -14,6 +14,7 @@ const Profile = ({
   buttonDisabled,
   setButtonDisabled,
 }) => {
+  const [inputsDisabled, setInputsDisabled] = React.useState(false);
   const currentUser = React.useContext(UserContext);
   const { formValue, error, handleChange, setData } = useForm();
 
@@ -25,11 +26,13 @@ const Profile = ({
   function handleEditClick() {
     setIsEditing(true);
     setData(currentUser.name, currentUser.email);
+    setInputsDisabled(false)
   }
 
   function handleEditProfileSubmit(e) {
     e.preventDefault();
     onEditProfileSubmit(formValue);
+    setInputsDisabled(true)
   }
 
   React.useEffect(() => {
@@ -69,7 +72,7 @@ const Profile = ({
                 name="name"
                 onChange={handleControl}
                 value={isEditing ? formValue.name : currentUser.name}
-                disabled={isEditing ? false : true}
+                disabled={inputsDisabled}
                 placeholder="Введите ваше имя"
               ></input>
             </div>
@@ -88,7 +91,7 @@ const Profile = ({
                 name="email"
                 value={isEditing ? formValue.email : currentUser.email}
                 onChange={handleControl}
-                disabled={isEditing ? false : true}
+                disabled={inputsDisabled}
                 placeholder="Введите ваш e-mail"
               ></input>
             </div>
@@ -101,7 +104,7 @@ const Profile = ({
             className={`profile__save ${
               isEditing ? "profile__save_active" : "profile__save"
             } ${buttonDisabled ? "profile__save_disabled" : ""}`}
-            disabled={isEditing && buttonDisabled ? true : false}
+            disabled={inputsDisabled}
           >
             {isLoading ? "Сохранение..." : "Сохранить"}
           </button>
