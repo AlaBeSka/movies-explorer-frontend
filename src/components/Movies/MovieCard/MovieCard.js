@@ -6,8 +6,9 @@ function MovieCard({ movie, onSave, onDeleteMovie }) {
   const location = useLocation();
   const hours = Math.floor(movie.duration / 60);
   const min = movie.duration - hours * 60;
-  const ButtonSaveClass = `${(movie.isSaved) ? "card__like card__like_active" : "card__like"}`;
-console.log(movie)
+  const ButtonSaveClass = `${
+    movie.isSaved ? "card__like card__like_active" : "card__like"
+  }`;
   function handleSaveMovie(e) {
     e.preventDefault();
     onSave(movie);
@@ -21,10 +22,18 @@ console.log(movie)
   return (
     <article className="card">
       <a href={movie.trailerLink} target="_blank" rel="noreferrer">
-      {location.pathname === "/movies" ? (
-          <img src={`https://api.nomoreparties.co${movie.image.url}`} alt="Постер" className="card__poster" />
+        {location.pathname === "/movies" ? (
+          <img
+            src={`https://api.nomoreparties.co${movie.image.url}`}
+            alt="Постер"
+            className="card__poster"
+          />
         ) : (
-          <img src={`https://api.nomoreparties.co${movie.image}`} alt="Постер" className="card__poster" />
+          <img
+            src={`https://api.nomoreparties.co${movie.image}`}
+            alt="Постер"
+            className="card__poster"
+          />
         )}
       </a>
       <div className="card__container">
@@ -37,7 +46,9 @@ console.log(movie)
         <button
           id="buttonLike"
           className={`${
-            location.pathname === "/movies" ? ButtonSaveClass : "card__like_hidden"
+            location.pathname === "/movies"
+              ? ButtonSaveClass
+              : "card__like_hidden"
           }`}
           onClick={handleSaveMovie}
         ></button>

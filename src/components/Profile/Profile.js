@@ -26,13 +26,13 @@ const Profile = ({
   function handleEditClick() {
     setIsEditing(true);
     setData(currentUser.name, currentUser.email);
-    setInputsDisabled(false)
+    setInputsDisabled(false);
   }
 
   function handleEditProfileSubmit(e) {
     e.preventDefault();
     onEditProfileSubmit(formValue);
-    setInputsDisabled(true)
+    setInputsDisabled(true);
   }
 
   React.useEffect(() => {
@@ -59,45 +59,43 @@ const Profile = ({
           onSubmit={isEditing ? handleEditProfileSubmit : handleEditClick}
         >
           <div className="profile__input">
-              <label htmlFor="name-field" className="profile__lable">
-                Имя
-              </label>
-              <input
-                type="text"
-                id="name-field"
-                className="profile__name"
-                minLength="2"
-                maxLength="40"
-                required
-                name="name"
-                onChange={handleControl}
-                value={isEditing ? formValue.name : currentUser.name}
-                disabled={inputsDisabled}
-                placeholder="Введите ваше имя"
-              ></input>
-            </div>
-            <span className="name-field-error profile__span">{error.name}</span>
+            <label htmlFor="name-field" className="profile__lable">
+              Имя
+            </label>
+            <input
+              type="text"
+              id="name-field"
+              className="profile__name"
+              minLength="2"
+              maxLength="40"
+              required
+              name="name"
+              onChange={handleControl}
+              value={isEditing ? formValue.name : currentUser.name}
+              disabled={inputsDisabled}
+              placeholder="Введите ваше имя"
+            ></input>
+          </div>
+          <span className="name-field-error profile__span">{error.name}</span>
           <div className="profile__input">
-              <label htmlFor="email-field" className="profile__lable">
-                E-mail
-              </label>
-              <input
-                type="text"
-                id="email-field"
-                className="profile__name"
-                minLength="2"
-                maxLength="40"
-                required
-                name="email"
-                value={isEditing ? formValue.email : currentUser.email}
-                onChange={handleControl}
-                disabled={inputsDisabled}
-                placeholder="Введите ваш e-mail"
-              ></input>
-            </div>
-            <span className="name-field-error profile__span">
-              {error.email}
-            </span>
+            <label htmlFor="email-field" className="profile__lable">
+              E-mail
+            </label>
+            <input
+              type="text"
+              id="email-field"
+              className="profile__name"
+              minLength="2"
+              maxLength="40"
+              required
+              name="email"
+              value={isEditing ? formValue.email : currentUser.email}
+              onChange={handleControl}
+              disabled={inputsDisabled}
+              placeholder="Введите ваш e-mail"
+            ></input>
+          </div>
+          <span className="name-field-error profile__span">{error.email}</span>
           <h2 className="profile__error">{errorMessageProfile}</h2>
           <button
             type="submit"
