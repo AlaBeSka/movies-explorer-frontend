@@ -72,13 +72,6 @@ function App() {
         localStorage.setItem("lastPath", location.pathname);
     }, [location.pathname]);
 
-    // useEffect(() => {
-    //   const lastPath = localStorage.getItem("lastPath");
-    //   if (lastPath) {
-    //     navigate(lastPath, { replace: true });
-    //   }
-    // }, [navigate]);
-
     useEffect(() => {
         setIsPreloaderLoading(true);
         if (loggedIn) {
@@ -126,14 +119,14 @@ function App() {
         };
     }, []);
 
-    const handleGoBack = () => {
-        window.history.back();
-    };
-
     function getWindowSize() {
         const {innerWidth, innerHeight} = window;
         return {innerWidth, innerHeight};
     }
+
+    const handleGoBack = () => {
+        window.history.back();
+    };
 
     function setMoviesAmounts() {
         if (windowSize.innerWidth > 1007) {
