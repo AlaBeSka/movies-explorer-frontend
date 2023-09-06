@@ -7,6 +7,7 @@
   overflow: hidden;
   flex-shrink: 0;
   font-family: "Inter", Arial, sans-serif;
+  height: 281px;
 }
 
 .card__poster {
@@ -27,6 +28,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  height: 46px;
 }
 
 .card__name {
@@ -45,7 +47,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding: 17px 0 0;
+  padding: 0;
   margin: 0;
 }
 
@@ -66,6 +68,10 @@
 .card__like:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.card__like_hidden {
+  display: none;
 }
 
 .card__like_active {
@@ -99,9 +105,21 @@
   .card__poster {
     height: 190px;
   }
+
+  .card {
+    height: 262px;
+  }
+
+  .card__description  {
+    height: 44px;
+  }
 }
 
 @media screen and (max-width: 500px) {
+  .card  {
+    height: 237px;
+  }
+
   .card__poster {
     height: 168px;
   }

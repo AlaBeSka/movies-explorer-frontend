@@ -33,6 +33,11 @@
   padding: 14px 0 14px 22px;
   overflow: hidden;
   border-radius: 40px;
+  outline:none;
+}
+
+.search__input:focus {
+  border-bottom: 1px solid #4285f4;
 }
 
 .search__submit {

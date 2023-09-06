@@ -11,7 +11,7 @@ const Navigation = ({ isOpen, onClose }) => {
         <button type="button" className="navigation__button_close" onClick={onClose} />
         <nav className="navigation__menu">
           <Routes>
-            {["/movies", "/saved-movies", "/profile"].map((path) => (
+            {['/', "/movies", "/saved-movies", "/profile"].map((path) => (
               <Route
                 key={path}
                 path={path}

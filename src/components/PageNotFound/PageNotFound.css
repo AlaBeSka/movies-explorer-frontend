@@ -35,6 +35,8 @@
 }
 
 .error__back {
+  background-color: transparent;
+  border: none;
   color: #4285f4;
   text-align: center;
   font-size: 14px;
